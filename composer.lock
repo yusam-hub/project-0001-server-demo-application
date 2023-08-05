@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d1b48268fae4dcba8a57154218b78ca",
+    "content-hash": "b46e1416ba5986457d5c698929b43960",
     "packages": [
         {
             "name": "bunny/bunny",
@@ -635,16 +635,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "b635f279edd83fc275f822a1188157ffea568ff6"
+                "reference": "8bd7c33a0734ae1c5d074360512beb716bef3f77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/b635f279edd83fc275f822a1188157ffea568ff6",
-                "reference": "b635f279edd83fc275f822a1188157ffea568ff6",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/8bd7c33a0734ae1c5d074360512beb716bef3f77",
+                "reference": "8bd7c33a0734ae1c5d074360512beb716bef3f77",
                 "shasum": ""
             },
             "require": {
@@ -731,7 +731,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.5.0"
+                "source": "https://github.com/guzzle/psr7/tree/2.6.0"
             },
             "funding": [
                 {
@@ -747,7 +747,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-17T16:11:26+00:00"
+            "time": "2023-08-03T15:06:02+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -2601,16 +2601,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.4.26",
+            "version": "v5.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "01ef6b2391a59bb4c5d3c59e2ef9b99c7d335d17"
+                "reference": "ff4bce3c33451e7ec778070e45bd23f74214cd5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/01ef6b2391a59bb4c5d3c59e2ef9b99c7d335d17",
-                "reference": "01ef6b2391a59bb4c5d3c59e2ef9b99c7d335d17",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/ff4bce3c33451e7ec778070e45bd23f74214cd5d",
+                "reference": "ff4bce3c33451e7ec778070e45bd23f74214cd5d",
                 "shasum": ""
             },
             "require": {
@@ -2644,7 +2644,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v5.4.26"
+                "source": "https://github.com/symfony/finder/tree/v5.4.27"
             },
             "funding": [
                 {
@@ -2660,7 +2660,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-09T13:55:15+00:00"
+            "time": "2023-07-31T08:02:31+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -2740,16 +2740,16 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.4.26",
+            "version": "v5.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "535261726c4e06284305e037c173675fed4aea0d"
+                "reference": "9f5624816c0b8d92f85666ac7ed2825a18fcd899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/535261726c4e06284305e037c173675fed4aea0d",
-                "reference": "535261726c4e06284305e037c173675fed4aea0d",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/9f5624816c0b8d92f85666ac7ed2825a18fcd899",
+                "reference": "9f5624816c0b8d92f85666ac7ed2825a18fcd899",
                 "shasum": ""
             },
             "require": {
@@ -2832,7 +2832,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-kernel/tree/v5.4.26"
+                "source": "https://github.com/symfony/http-kernel/tree/v5.4.27"
             },
             "funding": [
                 {
@@ -2848,7 +2848,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-29T15:43:25+00:00"
+            "time": "2023-07-31T10:18:38+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3681,20 +3681,21 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v6.3.2",
+            "version": "v6.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "34e5ca671222670ae00749d1f554713021f8ef63"
+                "reference": "77fb4f2927f6991a9843633925d111147449ee7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/34e5ca671222670ae00749d1f554713021f8ef63",
-                "reference": "34e5ca671222670ae00749d1f554713021f8ef63",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/77fb4f2927f6991a9843633925d111147449ee7a",
+                "reference": "77fb4f2927f6991a9843633925d111147449ee7a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
@@ -3744,7 +3745,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v6.3.2"
+                "source": "https://github.com/symfony/var-dumper/tree/v6.3.3"
             },
             "funding": [
                 {
@@ -3760,24 +3761,25 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-21T07:05:52+00:00"
+            "time": "2023-07-31T07:08:24+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.3.0",
+            "version": "v6.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "a9a8337aa641ef2aa39c3e028f9107ec391e5927"
+                "reference": "e23292e8c07c85b971b44c1c4b87af52133e2add"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/a9a8337aa641ef2aa39c3e028f9107ec391e5927",
-                "reference": "a9a8337aa641ef2aa39c3e028f9107ec391e5927",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e23292e8c07c85b971b44c1c4b87af52133e2add",
+                "reference": "e23292e8c07c85b971b44c1c4b87af52133e2add",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
@@ -3815,7 +3817,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.3.0"
+                "source": "https://github.com/symfony/yaml/tree/v6.3.3"
             },
             "funding": [
                 {
@@ -3831,7 +3833,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-28T13:28:14+00:00"
+            "time": "2023-07-31T07:08:24+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3923,7 +3925,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/app-ext.git",
-                "reference": "8bd4d6579e70ceb4f24b7a61c90216b1b409a863"
+                "reference": "576b4478337fa97f858fa32380a99909b5dcd834"
             },
             "require": {
                 "bunny/bunny": "@dev",
@@ -3980,7 +3982,7 @@
                 "files": []
             },
             "description": "yusam-hub/app-ext",
-            "time": "2023-07-30T10:18:20+00:00"
+            "time": "2023-08-04T01:23:00+00:00"
         },
         {
             "name": "yusam-hub/captcha",
@@ -4092,7 +4094,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/db-ext.git",
-                "reference": "dd891c9307ab821044bb62ca78eed45e3ef0b939"
+                "reference": "35f87ef26823e539e9dec573f52e927d60535a4d"
             },
             "require": {
                 "ext-json": "*",
@@ -4120,7 +4122,7 @@
                 "files": []
             },
             "description": "yusam-hub/db-ext",
-            "time": "2023-07-31T09:03:13+00:00"
+            "time": "2023-08-02T21:15:37+00:00"
         },
         {
             "name": "yusam-hub/debug",
@@ -4159,10 +4161,11 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/helpers.git",
-                "reference": "aba0752693db79fbc6def70c17824c8320f70bfa"
+                "reference": "159e9a99db2fc72a13d1c6bea295d5bbcef713aa"
             },
             "require": {
                 "ext-json": "*",
+                "ext-openssl": "*",
                 "php": "^7.4|^8.0|^8.1|^8.2"
             },
             "require-dev": {
@@ -4185,7 +4188,7 @@
                 "files": []
             },
             "description": "yusam-hub/helpers",
-            "time": "2023-03-16T15:03:34+00:00"
+            "time": "2023-08-03T22:03:52+00:00"
         },
         {
             "name": "yusam-hub/json-ext",
@@ -4231,7 +4234,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/model-ext.git",
-                "reference": "31cfd600727d977e633d6c5763d10e6f9d380278"
+                "reference": "e9762fff7100ff2cdf24bbc3e98e7084df0e0b82"
             },
             "require": {
                 "php": "^7.4|^8.0|^8.1|^8.2",
@@ -4255,7 +4258,7 @@
                 "files": []
             },
             "description": "yusam-hub/model-ext",
-            "time": "2023-03-27T02:49:12+00:00"
+            "time": "2023-08-02T20:41:15+00:00"
         },
         {
             "name": "yusam-hub/php-compatibility",
@@ -4289,6 +4292,40 @@
             },
             "description": "yusam-hub/php-compatibility",
             "time": "2023-03-13T01:23:29+00:00"
+        },
+        {
+            "name": "yusam-hub/project-0001-client-auth-sdk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yusam-hub/project-0001-client-auth-sdk.git",
+                "reference": "788845913f9e706c33a99419ca25deb851a9e6d6"
+            },
+            "require": {
+                "firebase/php-jwt": "^6.0",
+                "php": "^8.1",
+                "yusam-hub/curl-ext": "dev-master",
+                "yusam-hub/php-compatibility": "dev-master"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "YusamHub\\Project0001ClientAuthSdk\\": "src/"
+                },
+                "files": []
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "YusamHub\\Project0001ClientAuthSdk\\Tests\\": "tests/"
+                },
+                "files": []
+            },
+            "description": "yusam-hub/project-0001-client-auth-sdk",
+            "time": "2023-08-05T23:13:46+00:00"
         },
         {
             "name": "yusam-hub/project-0001-client-demo-sdk",
@@ -4394,7 +4431,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/validator.git",
-                "reference": "104959a97fd7e505cb9629469746cfde23731c35"
+                "reference": "2f4706f0148cd871da2b4794468e10a7505b50e1"
             },
             "require": {
                 "php": "^7.4|^8.0|^8.1|^8.2"
@@ -4417,7 +4454,7 @@
                 "files": []
             },
             "description": "yusam-hub/validator",
-            "time": "2023-03-11T15:40:15+00:00"
+            "time": "2023-08-02T05:33:38+00:00"
         },
         {
             "name": "yusam-hub/web-socket",
@@ -5762,16 +5799,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "5.0.5",
+            "version": "5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "0ca8db5a5fc9c8646244e629625ac486fa286bf2"
+                "reference": "bde739e7565280bda77be70044ac1047bc007e34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/0ca8db5a5fc9c8646244e629625ac486fa286bf2",
-                "reference": "0ca8db5a5fc9c8646244e629625ac486fa286bf2",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/bde739e7565280bda77be70044ac1047bc007e34",
+                "reference": "bde739e7565280bda77be70044ac1047bc007e34",
                 "shasum": ""
             },
             "require": {
@@ -5814,7 +5851,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.5"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.6"
             },
             "funding": [
                 {
@@ -5822,7 +5859,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-14T08:28:10+00:00"
+            "time": "2023-08-02T09:26:13+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -6288,6 +6325,7 @@
         "yusam-hub/helpers": 20,
         "yusam-hub/model-ext": 20,
         "yusam-hub/app-ext": 20,
+        "yusam-hub/project-0001-client-auth-sdk": 20,
         "yusam-hub/project-0001-client-demo-sdk": 20
     },
     "prefer-stable": false,

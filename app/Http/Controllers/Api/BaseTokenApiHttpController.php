@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\ApiClients\ClientAuthApiAppSdk;
+use App\Model\Authorize\DemoAuthorizeModel;
 use Symfony\Component\HttpFoundation\Request;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
 use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
@@ -61,11 +62,12 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
                 throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40102], self::AUTH_ERROR_CODE_40102);
             }
 
-            if (!isset($userKey['keyHash']) || !isset($userKey['publicKey'])) {
+            if (!isset($userKey['data']['keyHash']) || !isset($userKey['data']['publicKey'])) {
+                $this->debug(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_401021], $userKey);
                 throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_401021], self::AUTH_ERROR_CODE_401021);
             }
 
-            $demoTokenPayload = JwtDemoTokenHelper::fromJwtAsPayload($jwtToken, $userKey['publicKey']);
+            $demoTokenPayload = JwtDemoTokenHelper::fromJwtAsPayload($jwtToken, $userKey['data']['publicKey']);
             if (
                 is_null($demoTokenPayload->aid)
                 ||
@@ -87,7 +89,7 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
                 ||
                 $demoTokenPayload->did != $demoTokenHead->did
                 ||
-                $demoTokenPayload->phs != $userKey['keyHash']
+                $demoTokenPayload->phs != $userKey['data']['keyHash']
             ) {
                 throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40104], self::AUTH_ERROR_CODE_40104);
             }
@@ -97,6 +99,8 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
             if ($serverTime < $demoTokenPayload->iat and $serverTime > $demoTokenPayload->exp) {
                 throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40105], self::AUTH_ERROR_CODE_40105);
             }
+
+            DemoAuthorizeModel::Instance()->userId = $demoTokenPayload->uid;
 
         } catch (\Throwable $e) {
 

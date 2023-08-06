@@ -34,8 +34,6 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
             $accessTokenInfo = $clientAuthApiAppSdk->getAccessToken($accessToken);
 
             if (is_null($accessTokenInfo) || !isset($accessTokenInfo['data'])) {
-                $responseData = $clientAuthApiAppSdk->getApi()->getLastResponse()->toArray();
-                $this->debug(__METHOD__, $responseData);
                 throw new \Exception("Invalid access token", 40101);
             }
 

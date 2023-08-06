@@ -52,6 +52,10 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
                 throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40101], self::AUTH_ERROR_CODE_40101);
             }
 
+            /**
+             * todo: сделать кеширование хранить там ключи!!!!
+             *       чтобы каждый запрос пользователя мы не обращались к серверу авторизации!!!
+             */
             $clientAuthApiAppSdk = new ClientAuthApiAppSdk();
             if ($clientAuthApiAppSdk->getIdentifierId() !== $demoTokenHead->aid) {
                 throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_401011], self::AUTH_ERROR_CODE_401011);

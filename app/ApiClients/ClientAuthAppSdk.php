@@ -2,7 +2,7 @@
 
 namespace App\ApiClients;
 
-class ClientAuthApiAppSdk extends \YusamHub\Project0001ClientAuthSdk\ClientAuthApiAppSdk
+class ClientAuthAppSdk extends \YusamHub\Project0001ClientAuthSdk\ClientAuthAppSdk
 {
     public function __construct()
     {

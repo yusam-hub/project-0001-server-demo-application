@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\ApiClients\ClientAuthApiAppSdk;
+use App\ApiClients\ClientAuthAppSdk;
 use App\Model\Authorize\DemoAuthorizeModel;
 use Symfony\Component\HttpFoundation\Request;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
@@ -30,12 +30,16 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
 
         try {
 
-            $clientAuthApiAppSdk = new ClientAuthApiAppSdk();
-            $accessTokenInfo = $clientAuthApiAppSdk->getAccessToken($accessToken);
+            $clientAuthAppSdk = new ClientAuthAppSdk();
+            $accessTokenInfo = $clientAuthAppSdk->getApiAppAccessToken($accessToken);
 
             if (is_null($accessTokenInfo) || !isset($accessTokenInfo['data'])) {
                 throw new \Exception("Invalid access token", 40101);
             }
+
+            /**
+             * todo: $accessTokenInfo - добавить в кеш на срок жизни
+             */
 
             DemoAuthorizeModel::Instance()->payload = new AccessTokenPayload($accessTokenInfo['data']);
 

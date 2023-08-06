@@ -1,7 +1,7 @@
 <?php
 
 return [
-    \App\ApiClients\ClientAuthApiAppSdk::class => [
+    \App\ApiClients\ClientAuthAppSdk::class => [
         'isDebugging' => true,
         'baseUrl' => 'http://192.168.0.110:10001',
         'storageLogFile' => app_ext()->getStorageDir('/logs/') . 'curl-ext-debug-app-sdk.log',

@@ -57,7 +57,7 @@ class V1ControllerApi extends BaseTokenApiHttpController
     public function getApiTest(Request $request): array
     {
         return [
-            'userId' => DemoAuthorizeModel::Instance()->userId
+            'payload' => (array) DemoAuthorizeModel::Instance()->payload
         ];
     }
 }

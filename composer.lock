@@ -4299,7 +4299,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/project-0001-client-auth-sdk.git",
-                "reference": "0be99c78f752532bd960dfdbcf6b4aff2351daeb"
+                "reference": "907e1b2e925f665bd1afc68856947409450d368c"
             },
             "require": {
                 "firebase/php-jwt": "^6.0",
@@ -4324,7 +4324,7 @@
                 "files": []
             },
             "description": "yusam-hub/project-0001-client-auth-sdk",
-            "time": "2023-08-05T23:48:45+00:00"
+            "time": "2023-08-06T05:24:11+00:00"
         },
         {
             "name": "yusam-hub/project-0001-client-demo-sdk",
@@ -4332,7 +4332,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/project-0001-client-demo-sdk.git",
-                "reference": "4b720ce303b8891138b56e2010a1155f3d7f5e01"
+                "reference": "ca0a2534fcd5b5ea5daa32221fdce95edc91e448"
             },
             "require": {
                 "firebase/php-jwt": "^6.0",
@@ -4357,7 +4357,7 @@
                 "files": []
             },
             "description": "yusam-hub/project-0001-client-demo-sdk",
-            "time": "2023-08-06T00:08:03+00:00"
+            "time": "2023-08-06T00:47:25+00:00"
         },
         {
             "name": "yusam-hub/redis-ext",

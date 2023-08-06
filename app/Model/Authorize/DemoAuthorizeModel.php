@@ -2,6 +2,8 @@
 
 namespace App\Model\Authorize;
 
+use YusamHub\Project0001ClientAuthSdk\Payloads\AccessTokenPayload;
+
 class DemoAuthorizeModel
 {
     protected static ?DemoAuthorizeModel $instance = null;
@@ -12,5 +14,6 @@ class DemoAuthorizeModel
         }
         return static::$instance;
     }
-    public ?int $userId = null;
+
+    public ?AccessTokenPayload $payload = null;
 }

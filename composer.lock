@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bunny/bunny",
-            "version": "v0.5.4",
+            "version": "v0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubkulhan/bunny.git",
-                "reference": "1f6c8f2163efaf9455c3390435424d93649f1d83"
+                "reference": "10e34dec73397d30cb79f61dd81e9716644ede01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/1f6c8f2163efaf9455c3390435424d93649f1d83",
-                "reference": "1f6c8f2163efaf9455c3390435424d93649f1d83",
+                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/10e34dec73397d30cb79f61dd81e9716644ede01",
+                "reference": "10e34dec73397d30cb79f61dd81e9716644ede01",
                 "shasum": ""
             },
             "require": {
@@ -27,6 +27,7 @@
             },
             "require-dev": {
                 "ext-pcntl": "*",
+                "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.5 || ^7.5.20",
                 "symfony/process": "^6.1 || ^4.4"
             },
@@ -66,9 +67,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jakubkulhan/bunny/issues",
-                "source": "https://github.com/jakubkulhan/bunny/tree/v0.5.4"
+                "source": "https://github.com/jakubkulhan/bunny/tree/v0.5.5"
             },
-            "time": "2022-12-15T20:23:51+00:00"
+            "time": "2023-08-01T19:34:13+00:00"
         },
         {
             "name": "cboden/ratchet",
@@ -407,28 +408,28 @@
         },
         {
             "name": "evenement/evenement",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/igorw/evenement.git",
-                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7"
+                "reference": "0a16b0d71ab13284339abb99d9d2bd813640efbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/igorw/evenement/zipball/531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
-                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
+                "url": "https://api.github.com/repos/igorw/evenement/zipball/0a16b0d71ab13284339abb99d9d2bd813640efbc",
+                "reference": "0a16b0d71ab13284339abb99d9d2bd813640efbc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^9 || ^6"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Evenement": "src"
+                "psr-4": {
+                    "Evenement\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -448,9 +449,9 @@
             ],
             "support": {
                 "issues": "https://github.com/igorw/evenement/issues",
-                "source": "https://github.com/igorw/evenement/tree/master"
+                "source": "https://github.com/igorw/evenement/tree/v3.0.2"
             },
-            "time": "2017-07-23T21:35:13+00:00"
+            "time": "2023-08-08T05:53:35+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -748,6 +749,86 @@
                 }
             ],
             "time": "2023-08-03T15:06:02+00:00"
+        },
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "v6.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "df16b615e371d81fb79e506277faea67a1be18f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/df16b615e371d81fb79e506277faea67a1be18f1",
+                "reference": "df16b615e371d81fb79e506277faea67a1be18f1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-filter": "*",
+                "ext-hash": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+                "doctrine/annotations": "^1.2.6 || ^1.13.3",
+                "php-parallel-lint/php-console-highlighter": "^1.0.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpcompatibility/php-compatibility": "^9.3.5",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.7.1",
+                "yoast/phpunit-polyfills": "^1.0.4"
+            },
+            "suggest": {
+                "ext-mbstring": "Needed to send email in multibyte encoding charset or decode encoded addresses",
+                "ext-openssl": "Needed for secure SMTP sending and DKIM signing",
+                "greew/oauth2-azure-provider": "Needed for Microsoft Azure XOAUTH2 authentication",
+                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                "psr/log": "For optional PSR-3 debug logging",
+                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)",
+                "thenetworg/oauth2-azure": "Needed for Microsoft XOAUTH2 authentication"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPMailer\\PHPMailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-only"
+            ],
+            "authors": [
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "support": {
+                "issues": "https://github.com/PHPMailer/PHPMailer/issues",
+                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.8.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Synchro",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-03-06T14:43:22+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -3925,7 +4006,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/app-ext.git",
-                "reference": "576b4478337fa97f858fa32380a99909b5dcd834"
+                "reference": "440709c6ab52662ccbbc6e1c6e8398ca9b0d0dd9"
             },
             "require": {
                 "bunny/bunny": "@dev",
@@ -3936,6 +4017,7 @@
                 "ext-pdo": "*",
                 "ext-redis": "*",
                 "php": "^7.4|^8.0|^8.1|^8.2",
+                "phpmailer/phpmailer": "^6.8.0",
                 "psr/log": "^1.1",
                 "react/http": "^1.8",
                 "swagger-api/swagger-ui": "^3.5",
@@ -3982,7 +4064,7 @@
                 "files": []
             },
             "description": "yusam-hub/app-ext",
-            "time": "2023-08-04T01:23:00+00:00"
+            "time": "2023-08-08T21:39:30+00:00"
         },
         {
             "name": "yusam-hub/captcha",
@@ -4094,7 +4176,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/db-ext.git",
-                "reference": "35f87ef26823e539e9dec573f52e927d60535a4d"
+                "reference": "d733dc479a7f4debced13cdcb7ebfa73f81a3218"
             },
             "require": {
                 "ext-json": "*",
@@ -4122,7 +4204,7 @@
                 "files": []
             },
             "description": "yusam-hub/db-ext",
-            "time": "2023-08-02T21:15:37+00:00"
+            "time": "2023-08-08T11:18:25+00:00"
         },
         {
             "name": "yusam-hub/debug",
@@ -4196,7 +4278,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yusam-hub/json-ext.git",
-                "reference": "8b66d7c45e4eee0c2bcbb0655097becf5a7792df"
+                "reference": "7c06b51a888ded34e94e89566017540eae58311c"
             },
             "require": {
                 "ext-curl": "*",
@@ -4226,7 +4308,7 @@
                 "files": []
             },
             "description": "yusam-hub/json-ext",
-            "time": "2023-03-09T12:42:07+00:00"
+            "time": "2023-08-07T00:27:58+00:00"
         },
         {
             "name": "yusam-hub/model-ext",

@@ -54,7 +54,7 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
             }
 
             $server_time = curl_ext_time_utc();
-            if (DemoAuthorizeModel::Instance()->expired >= $server_time) {
+            if ($server_time >= DemoAuthorizeModel::Instance()->expired) {
                 throw new \Exception("Access token expired", 40112);
             }
 

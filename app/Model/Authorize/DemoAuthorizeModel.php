@@ -2,8 +2,6 @@
 
 namespace App\Model\Authorize;
 
-use YusamHub\Project0001ClientAuthSdk\Payloads\AccessTokenPayload;
-
 class DemoAuthorizeModel
 {
     protected static ?DemoAuthorizeModel $instance = null;
@@ -15,5 +13,18 @@ class DemoAuthorizeModel
         return static::$instance;
     }
 
-    public ?AccessTokenPayload $payload = null;
+    public ?string $type = null;
+    public ?int $expired = null;
+    public ?int $userId = null;
+    public ?int $appId = null;
+    public ?int $deviceUuid = null;
+
+    public function assign(array $properties): void
+    {
+        foreach($properties as $k => $v){
+            if (property_exists($this, $k)) {
+                $this->{$k} = $v;
+            }
+        }
+    }
 }

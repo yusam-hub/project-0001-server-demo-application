@@ -29,19 +29,34 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
         $accessToken = $request->headers->get(self::TOKEN_KEY_NAME,'');
 
         try {
+            $localCacheKey = md5($accessToken);
 
             $clientAuthAppSdk = new ClientAuthAppSdk();
-            $accessTokenInfo = $clientAuthAppSdk->getApiAppAccessToken($accessToken);
 
-            if (is_null($accessTokenInfo) || !isset($accessTokenInfo['data'])) {
-                throw new \Exception("Invalid access token", 40101);
+            if ($this->getRedisKernel()->connection()->has($localCacheKey)) {
+
+                DemoAuthorizeModel::Instance()->assign($this->getRedisKernel()->connection()->get($localCacheKey));
+
+            } else {
+
+                $accessTokenInfo = $clientAuthAppSdk->getApiAppAccessToken($accessToken);
+
+                if (is_null($accessTokenInfo) || !isset($accessTokenInfo['data'])) {
+                    throw new \Exception("Invalid access token", 40110);
+                }
+
+                DemoAuthorizeModel::Instance()->assign($accessTokenInfo['data']);
+
             }
 
-            /**
-             * todo: $accessTokenInfo - добавить в кеш на срок жизни
-             */
+            if (DemoAuthorizeModel::Instance()->appId !== $clientAuthAppSdk->getIdentifierId()) {
+                throw new \Exception("Fail use payload data as identifier", 40111);
+            }
 
-            DemoAuthorizeModel::Instance()->payload = new AccessTokenPayload($accessTokenInfo['data']);
+            $server_time = curl_ext_time_utc();
+            if (DemoAuthorizeModel::Instance()->expired >= $server_time) {
+                throw new \Exception("Access token expired", 40112);
+            }
 
         } catch (\Throwable $e) {
 

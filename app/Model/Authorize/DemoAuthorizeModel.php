@@ -17,7 +17,7 @@ class DemoAuthorizeModel
     public ?int $expired = null;
     public ?int $userId = null;
     public ?int $appId = null;
-    public ?int $deviceUuid = null;
+    public ?string $deviceUuid = null;
 
     public function assign(array $properties): void
     {

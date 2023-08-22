@@ -7,7 +7,6 @@ use App\Model\Authorize\DemoAuthorizeModel;
 use Symfony\Component\HttpFoundation\Request;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
 use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
-use YusamHub\Project0001ClientAuthSdk\Payloads\AccessTokenPayload;
 
 abstract class BaseTokenApiHttpController extends BaseApiHttpController implements ControllerMiddlewareInterface
 {

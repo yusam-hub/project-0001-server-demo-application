@@ -27,6 +27,7 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
         }
 
         $accessToken = $request->headers->get(self::TOKEN_KEY_NAME,'');
+        $serverTime = curl_ext_time_utc();
 
         try {
             $localCacheKey = md5($accessToken);
@@ -47,14 +48,18 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
 
                 DemoAuthorizeModel::Instance()->assign($accessTokenInfo['data']);
 
+                $this->getRedisKernel()->connection()->put(
+                    $localCacheKey,
+                    DemoAuthorizeModel::Instance()->toArray(),
+                    DemoAuthorizeModel::Instance()->expired - $serverTime
+                );
             }
 
             if (DemoAuthorizeModel::Instance()->appId !== $clientAuthAppSdk->getIdentifierId()) {
                 throw new \Exception("Fail use payload data as identifier", 40111);
             }
 
-            $server_time = curl_ext_time_utc();
-            if ($server_time >= DemoAuthorizeModel::Instance()->expired) {
+             if ($serverTime >= DemoAuthorizeModel::Instance()->expired) {
                 throw new \Exception("Access token expired", 40112);
             }
 

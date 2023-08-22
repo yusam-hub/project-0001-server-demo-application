@@ -27,4 +27,15 @@ class DemoAuthorizeModel
             }
         }
     }
+
+    public function toArray(): array
+    {
+        return [
+            'type' => $this->type,
+            'expired' => $this->expired,
+            'userId' => $this->userId,
+            'appId' => $this->appId,
+            'deviceUuid' => $this->deviceUuid,
+        ];
+    }
 }

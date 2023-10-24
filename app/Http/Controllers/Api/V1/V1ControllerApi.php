@@ -41,7 +41,7 @@ class V1ControllerApi extends BaseTokenApiHttpController
      *   path="/test",
      *   summary="Get test with authorize token",
      *   deprecated=false,
-     *   security={{"XTokenScheme":{}}},
+     *   security={{"XTokenScheme":{}},{"XSignScheme":{}}},
      *   @OA\Response(response=200, description="OK", @OA\MediaType(mediaType="application/json", @OA\Schema(
      *        @OA\Property(property="status", type="string", example="ok"),
      *        @OA\Property(property="data", type="array", example="array", @OA\Items(
@@ -57,7 +57,7 @@ class V1ControllerApi extends BaseTokenApiHttpController
     public function getApiTest(Request $request): array
     {
         return [
-            'authorizedData' => (array) DemoAuthorizeModel::Instance()
+            'DemoAuthorizeModel' => (array) DemoAuthorizeModel::Instance()
         ];
     }
 }

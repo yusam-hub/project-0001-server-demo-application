@@ -1,3 +1,19 @@
+#### vbox
+
+    cd /var/www/home-www/yusam/github/yusam-hub/project-0001/server-demo-application
+
+###### tail
+
+    tail -f app-2023-03-21.log
+
+###### composer
+
+    composer update
+
+###### console
+
+    php console
+
 #### dockers
 
     docker exec -it yusam-php81 sh

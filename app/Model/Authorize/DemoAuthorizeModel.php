@@ -13,10 +13,8 @@ class DemoAuthorizeModel
         return static::$instance;
     }
 
-    public ?string $type = null;
-    public ?int $expired = null;
-    public ?int $userId = null;
     public ?int $appId = null;
+    public ?int $userId = null;
     public ?string $deviceUuid = null;
 
     public function assign(array $properties): void
@@ -26,16 +24,5 @@ class DemoAuthorizeModel
                 $this->{$k} = $v;
             }
         }
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'type' => $this->type,
-            'expired' => $this->expired,
-            'userId' => $this->userId,
-            'appId' => $this->appId,
-            'deviceUuid' => $this->deviceUuid,
-        ];
     }
 }

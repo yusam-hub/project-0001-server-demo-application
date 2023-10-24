@@ -55,6 +55,7 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
                 $appUserKeyId = intval($token);
                 $serviceKey = $sign;
 
+                //todo: need cache $appUserKeyId + $serviceKey на 600 секунд (что бы каждый раз не дергать апи авторизации)
                 $clientAuthAppSdk = new ClientAuthAppSdk();
                 $appUserKeyService = $clientAuthAppSdk->getApiAppUserKeyService($appUserKeyId, $serviceKey);
 

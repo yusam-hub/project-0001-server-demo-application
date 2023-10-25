@@ -3,18 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\ApiClients\ClientAuthAppSdk;
-use App\Model\Authorize\AppAuthorizeModel;
-use App\Model\Authorize\DemoAuthorizeModel;
-use App\Model\Database\AppModel;
-use Firebase\JWT\JWT;
 use Symfony\Component\HttpFoundation\Request;
-use YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
 use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
 use YusamHub\Project0001ClientAuthSdk\Servers\AppUserTokenServer;
 use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
-use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthAppTokenHelper;
-use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthAppUserTokenHelper;
 
 abstract class BaseTokenApiHttpController extends BaseApiHttpController implements ControllerMiddlewareInterface
 {

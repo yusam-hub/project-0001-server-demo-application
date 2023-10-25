@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
 use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
+use YusamHub\Project0001ClientAuthSdk\Servers\AppUserTokenServer;
+use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthAppTokenHelper;
 use YusamHub\Project0001ClientAuthSdk\Tokens\JwtAuthAppUserTokenHelper;
 
@@ -34,6 +36,16 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
         self::AUTH_ERROR_CODE_40106 => 'Invalid hash body',
     ];
 
+    protected function getContent(Request $request): string
+    {
+        if (strtoupper($request->getMethod()) === 'GET') {
+            $content = http_build_query($request->query->all());
+        } else {
+            $content = $request->getContent();
+        }
+        return $content;
+    }
+
     /**
      * @param Request $request
      * @return void
@@ -45,89 +57,21 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
                 return;
             }
         }
-
-        $token = $request->headers->get(self::TOKEN_KEY_NAME,'');
-        $sign = $request->headers->get(self::SIGN_KEY_NAME,'');
+        $appUserTokenServer = new AppUserTokenServer(
+            new ClientAuthAppSdk(),
+            $request->headers->get(self::TOKEN_KEY_NAME,''),
+            $request->headers->get(self::SIGN_KEY_NAME,''),
+            $this->getContent($request)
+        );
 
         try {
 
-            if (!empty($sign)) {
-                $appUserKeyId = intval($token);
-                $serviceKey = $sign;
-
-                //todo: need cache $appUserKeyId + $serviceKey на 600 секунд (что бы каждый раз не дергать апи авторизации)
-                $clientAuthAppSdk = new ClientAuthAppSdk();
-                $appUserKeyService = $clientAuthAppSdk->getApiAppUserKeyService($appUserKeyId, $serviceKey);
-
-                if (is_null($appUserKeyService)) {
-                    throw new \YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException([
-                        self::TOKEN_KEY_NAME => 'Invalid value',
-                        self::SIGN_KEY_NAME => 'Invalid value',
-                    ]);
-                }
-
-                if (!isset($appUserKeyService['data']['appId'],$appUserKeyService['data']['userId'],$appUserKeyService['data']['deviceUuid'])) {
-                    throw new \YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException([
-                        self::TOKEN_KEY_NAME => 'Invalid value',
-                        self::SIGN_KEY_NAME => 'Invalid value',
-                    ]);
-                }
-
-                DemoAuthorizeModel::Instance()->appId = intval($appUserKeyService['data']['appId']);
-                DemoAuthorizeModel::Instance()->userId = intval($appUserKeyService['data']['userId']);
-                DemoAuthorizeModel::Instance()->deviceUuid = strval($appUserKeyService['data']['deviceUuid']);
-                return;
-            }
-
-            $serverTime = curl_ext_time_utc();
-            JWT::$timestamp = $serverTime;
-
-            $appUserHeads = JwtAuthAppUserTokenHelper::fromJwtAsHeads($token);
-
-            if (is_null($appUserHeads->aid) || is_null($appUserHeads->uid) || is_null($appUserHeads->did)) {
-                throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40101], self::AUTH_ERROR_CODE_40101);
-            }
-
-            //todo: need cache $appUserKey['publicKey'], при это hashKey должен быть в токене передан
-
-            $clientAuthAppSdk = new ClientAuthAppSdk();
-            $appUserKey = $clientAuthAppSdk->getApiAppUserKey($appUserHeads->uid, $appUserHeads->did);
-
-            if (!isset($appUserKey['publicKey'])) {
-                throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40102], self::AUTH_ERROR_CODE_40102);
-            }
-
-            $appUserTokenPayload = JwtAuthAppUserTokenHelper::fromJwtAsPayload($token, $appUserKey['publicKey']);
-
-            if (is_null($appUserTokenPayload->aid) || is_null($appUserTokenPayload->uid) || is_null($appUserTokenPayload->did) || is_null($appUserTokenPayload->iat) || is_null($appUserTokenPayload->exp) || is_null($appUserTokenPayload->hb)) {
-                throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40103], self::AUTH_ERROR_CODE_40103);
-            }
-
-            if ($appUserTokenPayload->aid != $appUserHeads->aid || $appUserTokenPayload->uid != $appUserHeads->uid || $appUserTokenPayload->did != $appUserHeads->did) {
-                throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40104], self::AUTH_ERROR_CODE_40104);
-            }
-
-            if ($serverTime < $appUserTokenPayload->iat and $serverTime > $appUserTokenPayload->exp) {
-                throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40105], self::AUTH_ERROR_CODE_40105);
-            }
-
-            if (strtoupper($request->getMethod()) === 'GET') {
-                $content = http_build_query($request->query->all());
-            } else {
-                $content = $request->getContent();
-            }
-            if (md5($content) !== $appUserTokenPayload->hb) {
-                throw new \Exception(self::AUTH_ERROR_MESSAGES[self::AUTH_ERROR_CODE_40106], self::AUTH_ERROR_CODE_40106);
-            }
-
-            DemoAuthorizeModel::Instance()->appId = $appUserTokenPayload->aid;
-            DemoAuthorizeModel::Instance()->userId = $appUserTokenPayload->uid;
-            DemoAuthorizeModel::Instance()->deviceUuid = $appUserTokenPayload->did;
+            AppUserTokenAuthorizeModel::Instance()->assign($appUserTokenServer->getAuthorizeModelOrFail());
 
         } catch (\Throwable $e) {
 
-            if ($e instanceof HttpUnauthorizedAppExtRuntimeException) {
-                throw $e;
+            if ($e instanceof \RuntimeException) {
+                throw new \YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException(json_decode($e->getMessage(), true));
             }
 
             throw new \YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException([

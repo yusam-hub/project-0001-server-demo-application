@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\ApiSwaggerController;
 use App\Http\Controllers\Api\BaseTokenApiHttpController;
-use App\Model\Authorize\DemoAuthorizeModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
 
 class V1ControllerApi extends BaseTokenApiHttpController
 {
@@ -57,7 +57,7 @@ class V1ControllerApi extends BaseTokenApiHttpController
     public function getApiTest(Request $request): array
     {
         return [
-            'DemoAuthorizeModel' => (array) DemoAuthorizeModel::Instance()
+            'AppUserTokenAuthorizeModel' => (array) AppUserTokenAuthorizeModel::Instance()
         ];
     }
 }

@@ -12,22 +12,6 @@ use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
 abstract class BaseTokenApiHttpController extends BaseApiHttpController implements ControllerMiddlewareInterface
 {
     use ControllerMiddlewareTrait;
-    const TOKEN_KEY_NAME = 'X-Token';
-    const SIGN_KEY_NAME = 'X-Sign';
-    const AUTH_ERROR_CODE_40101 = 40101;
-    const AUTH_ERROR_CODE_40102 = 40102;
-    const AUTH_ERROR_CODE_40103 = 40103;
-    const AUTH_ERROR_CODE_40104 = 40104;
-    const AUTH_ERROR_CODE_40105 = 40105;
-    const AUTH_ERROR_CODE_40106 = 40106;
-    const AUTH_ERROR_MESSAGES = [
-        self::AUTH_ERROR_CODE_40101 => 'Invalid identifier in head',
-        self::AUTH_ERROR_CODE_40102 => 'Fail load by identifier',
-        self::AUTH_ERROR_CODE_40103 => 'Fail load payload data',
-        self::AUTH_ERROR_CODE_40104 => 'Fail use payload data as identifier',
-        self::AUTH_ERROR_CODE_40105 => 'Token expired',
-        self::AUTH_ERROR_CODE_40106 => 'Invalid hash body',
-    ];
 
     protected function getContent(Request $request): string
     {
@@ -52,8 +36,8 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
         }
         $appUserTokenServer = new AppUserTokenServer(
             new ClientAuthAppSdk(),
-            $request->headers->get(self::TOKEN_KEY_NAME,''),
-            $request->headers->get(self::SIGN_KEY_NAME,''),
+            $request->headers->get(AppUserTokenServer::TOKEN_KEY_NAME,''),
+            $request->headers->get(AppUserTokenServer::SIGN_KEY_NAME,''),
             $this->getContent($request)
         );
 
@@ -68,7 +52,7 @@ abstract class BaseTokenApiHttpController extends BaseApiHttpController implemen
             }
 
             throw new \YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException([
-                self::TOKEN_KEY_NAME => 'Invalid value',
+                AppUserTokenServer::TOKEN_KEY_NAME => 'Invalid value',
                 'detail' => $e->getMessage(),
                 'code' => $e->getCode(),
                 'class' => get_class($e)

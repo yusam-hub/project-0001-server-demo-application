@@ -38,7 +38,7 @@ abstract class BaseAppServiceKeyApiHttpController extends BaseApiHttpController 
         }
 
         $appServiceKeyServer = new AppServiceKeyServer(
-            'testing',
+            app_ext_config('authorize.adminServiceKey'),
             $request->headers->get(AppUserTokenServer::TOKEN_KEY_NAME,''),
             $request->headers->get(AppUserTokenServer::SIGN_KEY_NAME,''),
             $this->getContent($request)

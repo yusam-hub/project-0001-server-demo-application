@@ -6,9 +6,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ApiSwaggerController extends \YusamHub\AppExt\SymfonyExt\Http\Controllers\ApiSwaggerController
 {
+    const MODULE_ADMIN = 'admin';
     const MODULE_V1 = 'v1';
 
     const MODULES = [
+        self::MODULE_ADMIN,
         self::MODULE_V1,
     ];
 

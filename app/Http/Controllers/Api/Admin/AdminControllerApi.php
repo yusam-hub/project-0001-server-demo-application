@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Api\ApiSwaggerController;
-use App\Http\Controllers\Api\BaseAppUserTokenApiHttpController;
+use App\Http\Controllers\Api\BaseAppServiceKeyApiHttpController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
 
-class V1ControllerApi extends BaseAppUserTokenApiHttpController
+class AdminControllerApi extends BaseAppServiceKeyApiHttpController
 {
-    const MODULE_CURRENT = ApiSwaggerController::MODULE_V1;
+    const MODULE_CURRENT = ApiSwaggerController::MODULE_ADMIN;
     const TO_MANY_REQUESTS_CHECK_ENABLED = false;
     const DEFAULT_TOO_MANY_REQUESTS_TTL = 60;
 
@@ -39,9 +38,9 @@ class V1ControllerApi extends BaseAppUserTokenApiHttpController
      * @OA\Get(
      *   tags={"default"},
      *   path="/test",
-     *   summary="Get test with authorize token",
+     *   summary="Get test with authorize service key",
      *   deprecated=false,
-     *   security={{"XTokenScheme":{}},{"XSignScheme":{}}},
+     *   security={{"XTokenScheme":{}}},
      *   @OA\Response(response=200, description="OK", @OA\MediaType(mediaType="application/json", @OA\Schema(
      *        @OA\Property(property="status", type="string", example="ok"),
      *        @OA\Property(property="data", type="array", example="array", @OA\Items(
@@ -57,7 +56,7 @@ class V1ControllerApi extends BaseAppUserTokenApiHttpController
     public function getApiTest(Request $request): array
     {
         return [
-            'AppUserTokenAuthorizeModel' => (array) AppUserTokenAuthorizeModel::Instance()
+            'ok'
         ];
     }
 }

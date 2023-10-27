@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\ApiClients\ClientAuthAppSdk;
 use Symfony\Component\HttpFoundation\Request;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
 use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
 use YusamHub\Project0001ClientAuthSdk\Exceptions\JsonAuthRuntimeException;
 use YusamHub\Project0001ClientAuthSdk\Servers\AppServiceKeyServer;
 use YusamHub\Project0001ClientAuthSdk\Servers\AppUserTokenServer;
+use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
 
 abstract class BaseAppUserTokenApiHttpController extends BaseApiHttpController implements ControllerMiddlewareInterface
 {
@@ -35,8 +37,8 @@ abstract class BaseAppUserTokenApiHttpController extends BaseApiHttpController i
             }
         }
 
-        $appServiceKeyServer = new AppServiceKeyServer(
-            'testing',
+        $appUserTokenServer = new AppUserTokenServer(
+            new ClientAuthAppSdk(),
             $request->headers->get(AppUserTokenServer::TOKEN_KEY_NAME,''),
             $request->headers->get(AppUserTokenServer::SIGN_KEY_NAME,''),
             $this->getContent($request)
@@ -44,7 +46,7 @@ abstract class BaseAppUserTokenApiHttpController extends BaseApiHttpController i
 
         try {
 
-            $appServiceKeyServer->authorizeOrFail();
+            AppUserTokenAuthorizeModel::Instance()->assign($appUserTokenServer->getAuthorizeModelOrFail());
 
         } catch (\Throwable $e) {
 

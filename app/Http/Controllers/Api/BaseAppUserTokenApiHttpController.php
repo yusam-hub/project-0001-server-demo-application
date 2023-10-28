@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\ApiClients\ClientAuthAppSdk;
+use App\AuthorizeServers\AppUserTokenServer;
 use Symfony\Component\HttpFoundation\Request;
 use YusamHub\AppExt\SymfonyExt\Http\Interfaces\ControllerMiddlewareInterface;
 use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
 use YusamHub\Project0001ClientAuthSdk\Exceptions\JsonAuthRuntimeException;
-use YusamHub\Project0001ClientAuthSdk\Servers\AppServiceKeyServer;
-use YusamHub\Project0001ClientAuthSdk\Servers\AppUserTokenServer;
 use YusamHub\Project0001ClientAuthSdk\Servers\BaseTokeServerInterface;
 use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
 

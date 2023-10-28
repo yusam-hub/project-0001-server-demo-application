@@ -1,5 +1,7 @@
 <?php
 
 return [
-    'adminServiceKey' => app_ext_env("AUTHORIZE_ADMIN_SERVICE_KEY"),
+    'adminServiceKeys' => [
+        app_ext_env("AUTHORIZE_ADMIN_SERVICE_KEY") => 1,
+    ],
 ];

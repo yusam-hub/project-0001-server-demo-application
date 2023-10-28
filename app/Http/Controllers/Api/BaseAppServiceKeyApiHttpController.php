@@ -9,7 +9,9 @@ use YusamHub\AppExt\SymfonyExt\Http\Traits\ControllerMiddlewareTrait;
 use YusamHub\Project0001ClientAuthSdk\Exceptions\JsonAuthRuntimeException;
 use YusamHub\Project0001ClientAuthSdk\Servers\AppServiceKeyServer;
 use YusamHub\Project0001ClientAuthSdk\Servers\AppUserTokenServer;
+use YusamHub\Project0001ClientAuthSdk\Servers\BaseTokeServerInterface;
 use YusamHub\Project0001ClientAuthSdk\Servers\Models\AppUserTokenAuthorizeModel;
+use YusamHub\Project0001ClientAuthSdk\Servers\Models\ServiceKeyAuthorizeModel;
 
 abstract class BaseAppServiceKeyApiHttpController extends BaseApiHttpController implements ControllerMiddlewareInterface
 {
@@ -39,14 +41,14 @@ abstract class BaseAppServiceKeyApiHttpController extends BaseApiHttpController 
 
         $appServiceKeyServer = new AppServiceKeyServer(
             app_ext_config('authorize.adminServiceKey'),
-            $request->headers->get(AppUserTokenServer::TOKEN_KEY_NAME,''),
-            $request->headers->get(AppUserTokenServer::SIGN_KEY_NAME,''),
+            $request->headers->get(BaseTokeServerInterface::TOKEN_KEY_NAME,''),
+            $request->headers->get(BaseTokeServerInterface::SIGN_KEY_NAME,''),
             $this->getContent($request)
         );
 
         try {
 
-            $appServiceKeyServer->authorizeOrFail();
+            ServiceKeyAuthorizeModel::Instance()->assign($appServiceKeyServer->getAuthorizeModelOrFail());
 
         } catch (\Throwable $e) {
 
@@ -55,7 +57,7 @@ abstract class BaseAppServiceKeyApiHttpController extends BaseApiHttpController 
             }
 
             throw new \YusamHub\AppExt\Exceptions\HttpUnauthorizedAppExtRuntimeException([
-                AppUserTokenServer::TOKEN_KEY_NAME => 'Invalid value',
+                BaseTokeServerInterface::TOKEN_KEY_NAME => 'Invalid value',
                 'detail' => $e->getMessage(),
                 'code' => $e->getCode(),
                 'class' => get_class($e)

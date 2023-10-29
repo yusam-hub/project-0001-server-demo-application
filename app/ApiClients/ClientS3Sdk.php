@@ -4,6 +4,7 @@ namespace App\ApiClients;
 
 use Aws\S3\S3Client;
 
+//todo: https://min.io/docs/minio/linux/reference/minio-mc-admin.html
 class ClientS3Sdk
 {
     protected string $bucketName;
@@ -11,17 +12,9 @@ class ClientS3Sdk
 
     public function __construct()
     {
-       //todo: https://min.io/docs/minio/linux/reference/minio-mc-admin.html
-       $this->s3Client = new S3Client([
-           'version' => 'latest',
-           'region' => 'us-east-1',
-           'use_path_style_endpoint' => true,
-           'endpoint' => 'http://192.168.0.200:9300/',
-           'credentials' => [
-               'key' => 'admin-access-key',
-               'secret' => 'K0tBHplDpkgog57EcVh6s9Mcg3kxa90UKsCLUe8N',
-           ],
-       ]);
+        $config = app_ext_config('api-clients.' . get_class($this));
+        $this->bucketName = $config['bucketName'] ?? '';
+        $this->s3Client = new S3Client($config['args']??[]);
     }
 
     /**

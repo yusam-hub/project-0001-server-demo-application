@@ -60,6 +60,26 @@ class ClientS3Sdk
 
     /**
      * @param string $path
+     * @return string|null
+     */
+    public function getObject(string $path): ?string
+    {
+        $awsResult = $this->s3Client->getObject([
+            'Bucket'   => $this->getBucketName(),
+            'Key'      => $path,
+        ]);
+        if (isset($awsResult["@metadata"]["statusCode"]) && ($awsResult["@metadata"]["statusCode"] == 200)) {
+            $body = $awsResult->get('Body');
+            if ($body instanceof \GuzzleHttp\Psr7\Stream) {
+                return $body->getContents();
+            }
+            return null;
+        }
+        return null;
+    }
+
+    /**
+     * @param string $path
      * @return bool
      */
     public function isObjectExist(string $path): bool
@@ -87,9 +107,11 @@ class ClientS3Sdk
     {
         $this->setBucketName('demo-dev');
         $key = 'check.txt';
-        if ($this->putObject($key, 'checking')) {
+        $date = date("Y-m-d H:i:s");
+        if ($this->putObject($key, $date)) {
             if ($this->isObjectExist($key)) {
-                if ($this->deleteObject($key)) {
+                $content = $this->getObject($key);
+                if ($content === $date && $this->deleteObject($key)) {
                     return true;
                 }
             }

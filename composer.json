@@ -93,7 +93,9 @@
 
     "firebase/php-jwt": "^6.0",
     "yusam-hub/project-0001-client-auth-sdk": "dev-master",
-    "yusam-hub/project-0001-client-demo-sdk": "dev-master"
+    "yusam-hub/project-0001-client-demo-sdk": "dev-master",
+
+    "aws/aws-sdk-php": "^3.219"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5"

@@ -11,6 +11,7 @@ class ClientS3Sdk
 
     public function __construct()
     {
+       //todo: https://min.io/docs/minio/linux/reference/minio-mc-admin.html
        $this->s3Client = new S3Client([
            'version' => 'latest',
            'region' => 'us-east-1',

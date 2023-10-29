@@ -70,14 +70,14 @@ class ClientS3Sdk
                 'Key' => $path,
                 'Body' => $body,
             ];
-            $this->logDebug(sprintf("putObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
+            $this->logDebug(sprintf("s3.putObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 
             $awsResult = $this->s3Client->putObject($args);
 
             if (isset($awsResult["@metadata"]["statusCode"]) && ($awsResult["@metadata"]["statusCode"] == 200)) {
 
                 $this->logDebug(
-                    sprintf("putObject return: %s", json_encode([
+                    sprintf("s3.putObject return: %s", json_encode([
                         'result' => true,
                     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
                 );
@@ -88,13 +88,13 @@ class ClientS3Sdk
         } catch (S3Exception $e) {
 
             $this->logDebug(
-                sprintf("putObject error: %s", $e->getMessage())
+                sprintf("s3.putObject error: %s", $e->getMessage())
             );
 
         }
 
         $this->logDebug(
-            sprintf("putObject return: %s", json_encode([
+            sprintf("s3.putObject return: %s", json_encode([
                 'result' => false,
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
         );
@@ -113,7 +113,7 @@ class ClientS3Sdk
                 'Bucket' => $this->getBucketName(),
                 'Key' => $path,
             ];
-            $this->logDebug(sprintf("getObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
+            $this->logDebug(sprintf("s3.getObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 
             $awsResult = $this->s3Client->getObject($args);
 
@@ -122,7 +122,7 @@ class ClientS3Sdk
                 if ($body instanceof \GuzzleHttp\Psr7\Stream) {
                     $content = $body->getContents();
                     $this->logDebug(
-                        sprintf("getObject return: %s", json_encode([
+                        sprintf("s3.getObject return: %s", json_encode([
                             'content' => $content,
                         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
                     );
@@ -132,13 +132,13 @@ class ClientS3Sdk
         } catch (S3Exception $e) {
 
             $this->logDebug(
-                sprintf("getObject error: %s", $e->getMessage())
+                sprintf("s3.getObject error: %s", $e->getMessage())
             );
 
         }
 
         $this->logDebug(
-            sprintf("getObject return: %s", json_encode([
+            sprintf("s3.getObject return: %s", json_encode([
                 'result' => null,
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
         );
@@ -154,14 +154,14 @@ class ClientS3Sdk
     {
         try {
 
-            $this->logDebug(sprintf("isObjectExist: %s", json_encode([
+            $this->logDebug(sprintf("s3.isObjectExist: %s", json_encode([
                 'bucketName' => $this->getBucketName(),
                 'key' => $path
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 
             $result = $this->s3Client->doesObjectExist($this->getBucketName(), $path);
 
-            $this->logDebug(sprintf("isObjectExist return: %s", json_encode([
+            $this->logDebug(sprintf("s3.isObjectExist return: %s", json_encode([
                 'result' => $result,
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 
@@ -170,12 +170,12 @@ class ClientS3Sdk
         } catch (S3Exception $e) {
 
             $this->logDebug(
-                sprintf("isObjectExist error: %s", $e->getMessage())
+                sprintf("s3.isObjectExist error: %s", $e->getMessage())
             );
 
         }
 
-        $this->logDebug(sprintf("isObjectExist return: %s", json_encode([
+        $this->logDebug(sprintf("s3.isObjectExist return: %s", json_encode([
             'result' => false,
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 
@@ -193,14 +193,14 @@ class ClientS3Sdk
                 'Bucket' => $this->getBucketName(),
                 'Key' => $path,
             ];
-            $this->logDebug(sprintf("deleteObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
+            $this->logDebug(sprintf("s3.deleteObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 
             $awsResult = $this->s3Client->deleteObject($args);
 
             if (isset($awsResult["@metadata"]["statusCode"]) && ($awsResult["@metadata"]["statusCode"] == 204)) {
 
                 $this->logDebug(
-                    sprintf("deleteObject return: %s", json_encode([
+                    sprintf("s3.deleteObject return: %s", json_encode([
                         'result' => true,
                     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
                 );
@@ -211,13 +211,13 @@ class ClientS3Sdk
         } catch (S3Exception $e) {
 
             $this->logDebug(
-                sprintf("deleteObject error: %s", $e->getMessage())
+                sprintf("s3.deleteObject error: %s", $e->getMessage())
             );
 
         }
 
         $this->logDebug(
-            sprintf("deleteObject return: %s", json_encode([
+            sprintf("s3.deleteObject return: %s", json_encode([
                 'result' => false,
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
         );

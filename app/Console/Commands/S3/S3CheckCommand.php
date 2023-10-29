@@ -27,9 +27,11 @@ class S3CheckCommand extends BaseConsoleCommand
     {
         $clientS3Sdk = new ClientS3Sdk();
         if ($clientS3Sdk->check()) {
+            $output->writeln($clientS3Sdk->getLogsAsString());
             $output->writeln("SUCCESS");
             return self::SUCCESS;
         }
+        $output->writeln($clientS3Sdk->getLogsAsString());
         $output->writeln("FAILURE");
         return self::FAILURE;
     }

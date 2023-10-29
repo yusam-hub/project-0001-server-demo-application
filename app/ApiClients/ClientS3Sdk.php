@@ -59,16 +59,16 @@ class ClientS3Sdk
 
     /**
      * @param string $path
-     * @param $stringOrResourceBody
+     * @param string $body
      * @return bool
      */
-    public function putObject(string $path, $stringOrResourceBody): bool
+    public function putObject(string $path, string $body): bool
     {
         try {
             $args = [
                 'Bucket' => $this->getBucketName(),
                 'Key' => $path,
-                'Body' => $stringOrResourceBody,
+                'Body' => $body,
             ];
             $this->logDebug(sprintf("putObject: %s", json_encode($args, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)));
 

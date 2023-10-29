@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2ae39d09675450a229a43fe598d5d16",
+    "content-hash": "19a97bbac1394e056a73960cba295040",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -4322,16 +4322,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.3.3",
+            "version": "v6.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e23292e8c07c85b971b44c1c4b87af52133e2add"
+                "reference": "9758b6c69d179936435d0ffb577c3708d57e38a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e23292e8c07c85b971b44c1c4b87af52133e2add",
-                "reference": "e23292e8c07c85b971b44c1c4b87af52133e2add",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9758b6c69d179936435d0ffb577c3708d57e38a8",
+                "reference": "9758b6c69d179936435d0ffb577c3708d57e38a8",
                 "shasum": ""
             },
             "require": {
@@ -4374,7 +4374,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.3.3"
+                "source": "https://github.com/symfony/yaml/tree/v6.3.7"
             },
             "funding": [
                 {
@@ -4390,7 +4390,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-31T07:08:24+00:00"
+            "time": "2023-10-28T23:31:00+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4950,6 +4950,38 @@
             },
             "description": "yusam-hub/redis-ext",
             "time": "2023-03-13T10:38:25+00:00"
+        },
+        {
+            "name": "yusam-hub/s3-sdk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yusam-hub/s3-sdk.git",
+                "reference": "3858491684374269124de07150eeda26a8acedaa"
+            },
+            "require": {
+                "aws/aws-sdk-php": "^3.219",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "YusamHub\\S3Sdk\\": "src/"
+                },
+                "files": []
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "YusamHub\\S3Sdk\\Tests\\": "tests/"
+                },
+                "files": []
+            },
+            "description": "yusam-hub/s3-sdk",
+            "time": "2023-10-29T20:12:09+00:00"
         },
         {
             "name": "yusam-hub/smarty-ext",
@@ -6884,6 +6916,7 @@
         "yusam-hub/helpers": 20,
         "yusam-hub/model-ext": 20,
         "yusam-hub/app-ext": 20,
+        "yusam-hub/s3-sdk": 20,
         "yusam-hub/project-0001-client-auth-sdk": 20,
         "yusam-hub/project-0001-client-demo-sdk": 20
     },

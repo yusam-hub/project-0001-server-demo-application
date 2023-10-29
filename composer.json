@@ -66,6 +66,10 @@
     "yusam-hub/project-0001-client-demo-sdk": {
       "type": "git",
       "url": "https://github.com/yusam-hub/project-0001-client-demo-sdk.git"
+    },
+    "yusam-hub/s3-sdk": {
+      "type": "git",
+      "url": "https://github.com/yusam-hub/s3-sdk.git"
     }
   },
   "require": {
@@ -90,6 +94,7 @@
     "yusam-hub/helpers": "dev-master",
     "yusam-hub/model-ext": "dev-master",
     "yusam-hub/app-ext": "dev-master",
+    "yusam-hub/s3-sdk": "dev-master",
 
     "firebase/php-jwt": "^6.0",
     "yusam-hub/project-0001-client-auth-sdk": "dev-master",

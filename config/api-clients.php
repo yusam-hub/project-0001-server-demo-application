@@ -9,6 +9,7 @@ return [
         "privateKey" =>  app_ext_env("CLIENT_AUTH_APP_SDK_APP_PRIVATE_KEY", '')
     ],
     \App\ApiClients\ClientS3Sdk::class => [
+        'channel' => 'app',
         'isDebugging' => true,
         'bucketName' => app_ext_env("CLIENT_S3_SDK_BUCKET_NAME", ''),
         'args' => [
